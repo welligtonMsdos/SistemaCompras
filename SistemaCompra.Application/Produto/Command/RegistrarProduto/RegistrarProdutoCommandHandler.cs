@@ -18,6 +18,7 @@ namespace SistemaCompra.Application.Produto.Command.RegistrarProduto
         public Task<bool> Handle(RegistrarProdutoCommand request, CancellationToken cancellationToken)
         {
             var produto = new ProdutoAgg.Produto(request.Nome, request.Descricao, request.Categoria, request.Preco);
+
             _produtoRepository.Registrar(produto);
 
             Commit();

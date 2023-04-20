@@ -20,6 +20,7 @@ namespace SistemaCompra.Application.SolicitacaoCompra.Query.ObterSolicitacaoComp
         public Task<ObterSolicitacaoCompraViewModel> Handle(ObterSolicitacaoCompraQuery request, CancellationToken cancellationToken)
         {
             var solicitacaoCompra = _solicitacaoCompraRepository.Obter(request.Id);
+
             var solicitacaoCompraViewModel = mapper.Map<ObterSolicitacaoCompraViewModel>(solicitacaoCompra);
 
             return Task.FromResult(solicitacaoCompraViewModel);

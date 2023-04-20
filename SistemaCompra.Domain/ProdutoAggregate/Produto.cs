@@ -2,6 +2,7 @@
 using SistemaCompra.Domain.Core.Model;
 using SistemaCompra.Domain.ProdutoAggregate.Events;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaCompra.Domain.ProdutoAggregate
 {
@@ -23,7 +24,7 @@ namespace SistemaCompra.Domain.ProdutoAggregate
             Id = Guid.NewGuid();
             Nome = nome ?? throw new ArgumentNullException(nameof(nome));
             Descricao = descricao ?? throw new ArgumentNullException(nameof(descricao));
-            //Preco = new Money(preco);
+            //Preco = new Money(preco);           
             Preco = preco;
             Categoria = (Categoria) Enum.Parse(typeof(Categoria), categoria);
             Situacao = Situacao.Ativo;
@@ -44,11 +45,9 @@ namespace SistemaCompra.Domain.ProdutoAggregate
             if (Situacao != Situacao.Ativo) throw new BusinessRuleException("Produto deve estar ativo!");
 
             //Preco = new Money(preco);
-
-            Preco = preco;
-
             //AddEvent(new PrecoAtualizadoEvent(Id, Preco.Value));
 
+            Preco = preco;
             AddEvent(new PrecoAtualizadoEvent(Id, Preco));
         }
     }

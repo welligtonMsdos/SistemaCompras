@@ -10,15 +10,12 @@ namespace SistemaCompra.Application.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            //CreateMap<ProdutoAgg.Produto, ObterProdutoViewModel>()
-            //    .ForMember(d=> d.Preco, o=> o.MapFrom(src=> src.Preco.Value));
-
             CreateMap<ProdutoAgg.Produto, ObterProdutoViewModel>()
                 .ForMember(d => d.Preco, o => o.MapFrom(src => src.Preco));
 
             CreateMap< SistemaCompraAgg.SolicitacaoCompra,  ObterSolicitacaoCompraViewModel>()
-                .ForMember(d => d.UsuarioSolicitante, o => o.MapFrom(src => src.UsuarioSolicitante.Nome))
-                .ForMember(d => d.NomeFornecedor, o => o.MapFrom(src => src.NomeFornecedor.Nome)).ReverseMap();
+                .ForMember(d => d.UsuarioSolicitante, o => o.MapFrom(src => src.UsuarioSolicitante))
+                .ForMember(d => d.NomeFornecedor, o => o.MapFrom(src => src.NomeFornecedor)).ReverseMap();
         }
     }
 }

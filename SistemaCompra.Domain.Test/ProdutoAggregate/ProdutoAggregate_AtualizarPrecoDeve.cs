@@ -16,8 +16,7 @@ namespace SistemaCompra.Domain.Test.ProdutoAggregate
             produto.AtualizarPreco(500);
 
             //Então
-            //Assert.Equal(500, produto.Preco.Value);
-            Assert.Equal(500, produto.Preco);
+            Assert.Equal(500, produto.Preco);           
         }
 
         [Fact]

@@ -28,6 +28,11 @@ namespace SistemaCompra.Infra.Data
 
             modelBuilder.Ignore<Event>();
 
+            modelBuilder.Ignore<Money>();
+            modelBuilder.Ignore<CondicaoPagamento>();
+            modelBuilder.Ignore<NomeFornecedor>();
+            modelBuilder.Ignore<UsuarioSolicitante>();
+
             modelBuilder.ApplyConfiguration(new ProdutoConfiguration());
 
             modelBuilder.Entity<Money>().HasNoKey();
@@ -43,7 +48,7 @@ namespace SistemaCompra.Infra.Data
         {
             optionsBuilder.UseLoggerFactory(loggerFactory)  
                 .EnableSensitiveDataLogging()
-                .UseSqlServer(@"Server=localhost\SQLEXPRESS01;Database=SistemaCompraDb;Trusted_Connection=True;MultipleActiveResultSets=true");
+                .UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=SistemaCompraDb;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
     }
 }
